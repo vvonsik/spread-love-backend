@@ -4,7 +4,7 @@ import { UPLOAD } from "../constants/common.js";
 import { AppError } from "../errors/AppError.js";
 import { assertExternalUrl } from "./urlUtils.js";
 
-const urlToDataUrl = async (imageUrl) => {
+export const urlToDataUrl = async (imageUrl) => {
   assertExternalUrl(imageUrl);
   const response = await fetch(imageUrl);
 
@@ -40,5 +40,3 @@ const urlToDataUrl = async (imageUrl) => {
 
   return `data:${contentType || "image/png"};base64,${base64}`;
 };
-
-export { urlToDataUrl };

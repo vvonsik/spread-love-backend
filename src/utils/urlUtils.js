@@ -1,5 +1,14 @@
 import { AppError } from "../errors/AppError.js";
 
+const ARTICLE_URL_PATTERNS = [
+  /v\.daum\.net\/v\//,
+  /\/article\//,
+  /\/news\//,
+  /\/post\//,
+  /\/entry\//,
+  /\/blog\//,
+];
+
 const BLOCKED_PATTERNS = [
   /^127\./,
   /^10\./,
@@ -10,6 +19,8 @@ const BLOCKED_PATTERNS = [
 ];
 
 const BLOCKED_HOSTS = ["localhost", "[::1]", "[::ffff:a9fe:a9fe]"];
+
+export const isArticleUrl = (url) => ARTICLE_URL_PATTERNS.some((pattern) => pattern.test(url));
 
 export const assertExternalUrl = (url) => {
   const { hostname } = new URL(url);
