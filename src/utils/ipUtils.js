@@ -1,4 +1,4 @@
-const getClientIP = (req) => {
+export const getClientIP = (req) => {
   const forwardedFor = req.headers["x-forwarded-for"];
 
   if (forwardedFor) {
@@ -7,5 +7,3 @@ const getClientIP = (req) => {
 
   return req.ip || null;
 };
-
-export { getClientIP };
